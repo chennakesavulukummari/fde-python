@@ -15,9 +15,10 @@ variable "key_name" {
   type        = string
   default     = "cf36-aws-nv-sshkeys"
 }
-
+/*
 variable "aws_profile" {
   description = "The AWS profile to use for authentication"
   type        = string
   default     = "svc-iac-demo"
 }
+*/
