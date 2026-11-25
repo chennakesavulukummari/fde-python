@@ -1,0 +1,14 @@
+{
+  "Cardiology": {
+    "count": 3,
+    "revenue": 1950.0
+  },
+  "Orthopedics": {
+    "count": 1,
+    "revenue": 600.0
+  },
+  "Pediatrics": {
+    "count": 1,
+    "revenue": 500.0
+  }
+}
