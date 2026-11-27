@@ -224,3 +224,155 @@ def lambda_handler(event, context):
 
 
 ```
+
+Status: Failed
+Test Event Name: Test-01
+
+Response:
+{
+  "errorMessage": "'Records'",
+  "errorType": "KeyError",
+  "requestId": "4d0bba70-1a14-4a2f-821e-98f8b553a395",
+  "stackTrace": [
+    "  File \"/var/task/lambda_function.py\", line 69, in lambda_handler\n    for record in event[\"Records\"]:\n"
+  ]
+}
+
+The area below shows the last 4 KB of the execution log.
+
+Function Logs:
+START RequestId: 4d0bba70-1a14-4a2f-821e-98f8b553a395 Version: $LATEST
+Received S3 Event
+[ERROR] KeyError: 'Records'
+Traceback (most recent call last):
+  File "/var/task/lambda_function.py", line 69, in lambda_handler
+    for record in event["Records"]:
+END RequestId: 4d0bba70-1a14-4a2f-821e-98f8b553a395
+REPORT RequestId: 4d0bba70-1a14-4a2f-821e-98f8b553a395	Duration: 9.86 ms	Billed Duration: 458 ms	Memory Size: 128 MB	Max Memory Used: 87 MB	Init Duration: 447.81 ms
+
+Request ID: 4d0bba70-1a14-4a2f-821e-98f8b553a395
+
+
+```
+{
+  "Records": [
+    {
+      "eventName": "ObjectCreated:Put",
+      "s3": {
+        "bucket": {
+          "name": "cloudbinary-fde-upload-demo"
+        },
+        "object": {
+          "key": "invoice.pdf",
+          "size": 102400
+        }
+      }
+    }
+  ]
+}
+```
+
+Status: Failed
+Test Event Name: Test-01
+
+Response:
+{
+  "errorMessage": "An error occurred (AuthorizationError) when calling the Publish operation: User: arn:aws:sts::225989338000:assumed-role/cloudbinary-s3-upload-notifier-role-fyb9z3m8/cloudbinary-s3-upload-notifier is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:225989338000:cloudbinary-upload-notifications because no identity-based policy allows the SNS:Publish action",
+  "errorType": "AuthorizationErrorException",
+  "requestId": "2ad3a2db-b72f-4b49-a4f2-92b03ed3876c",
+  "stackTrace": [
+    "  File \"/var/task/lambda_function.py\", line 80, in lambda_handler\n    message_id = send_notification(message)\n",
+    "  File \"/var/task/lambda_function.py\", line 53, in send_notification\n    response = sns.publish(\n",
+    "  File \"/var/lang/lib/python3.13/site-packages/botocore/client.py\", line 606, in _api_call\n    return self._make_api_call(operation_name, kwargs)\n",
+    "  File \"/var/lang/lib/python3.13/site-packages/botocore/context.py\", line 123, in wrapper\n    return func(*args, **kwargs)\n",
+    "  File \"/var/lang/lib/python3.13/site-packages/botocore/client.py\", line 1094, in _make_api_call\n    raise error_class(parsed_response, operation_name)\n"
+  ]
+}
+
+The area below shows the last 4 KB of the execution log.
+
+Function Logs:
+START RequestId: 2ad3a2db-b72f-4b49-a4f2-92b03ed3876c Version: $LATEST
+Received S3 Event
+File Details: {"bucket": "cloudbinary-fde-upload-demo", "file_name": "invoice.pdf", "file_size": 102400, "event": "ObjectCreated:Put"}
+[ERROR] AuthorizationErrorException: An error occurred (AuthorizationError) when calling the Publish operation: User: arn:aws:sts::225989338000:assumed-role/cloudbinary-s3-upload-notifier-role-fyb9z3m8/cloudbinary-s3-upload-notifier is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:225989338000:cloudbinary-upload-notifications because no identity-based policy allows the SNS:Publish action
+Traceback (most recent call last):
+  File "/var/task/lambda_function.py", line 80, in lambda_handler
+    message_id = send_notification(message)
+  File "/var/task/lambda_function.py", line 53, in send_notification
+    response = sns.publish(
+  File "/var/lang/lib/python3.13/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/var/lang/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/var/lang/lib/python3.13/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+END RequestId: 2ad3a2db-b72f-4b49-a4f2-92b03ed3876c
+REPORT RequestId: 2ad3a2db-b72f-4b49-a4f2-92b03ed3876c	Duration: 386.90 ms	Billed Duration: 387 ms	Memory Size: 128 MB	Max Memory Used: 89 MB
+
+Request ID: 2ad3a2db-b72f-4b49-a4f2-92b03ed3876c
+
+
+Status: Failed
+Test Event Name: Test-02
+
+Response:
+{
+  "errorMessage": "An error occurred (AuthorizationError) when calling the Publish operation: User: arn:aws:sts::225989338000:assumed-role/cloudbinary-s3-upload-notifier-role-fyb9z3m8/cloudbinary-s3-upload-notifier is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:225989338000:cloudbinary-upload-notifications because no identity-based policy allows the SNS:Publish action",
+  "errorType": "AuthorizationErrorException",
+  "requestId": "a91b73ff-49a8-404c-aa68-5c3ebabebad7",
+  "stackTrace": [
+    "  File \"/var/task/lambda_function.py\", line 80, in lambda_handler\n    message_id = send_notification(message)\n",
+    "  File \"/var/task/lambda_function.py\", line 53, in send_notification\n    response = sns.publish(\n",
+    "  File \"/var/lang/lib/python3.13/site-packages/botocore/client.py\", line 606, in _api_call\n    return self._make_api_call(operation_name, kwargs)\n",
+    "  File \"/var/lang/lib/python3.13/site-packages/botocore/context.py\", line 123, in wrapper\n    return func(*args, **kwargs)\n",
+    "  File \"/var/lang/lib/python3.13/site-packages/botocore/client.py\", line 1094, in _make_api_call\n    raise error_class(parsed_response, operation_name)\n"
+  ]
+}
+
+The area below shows the last 4 KB of the execution log.
+
+Function Logs:
+START RequestId: a91b73ff-49a8-404c-aa68-5c3ebabebad7 Version: $LATEST
+Received S3 Event
+File Details: {"bucket": "cloudbinary-fde-upload-demo", "file_name": "invoice.pdf", "file_size": 102400, "event": "ObjectCreated:Put"}
+[ERROR] AuthorizationErrorException: An error occurred (AuthorizationError) when calling the Publish operation: User: arn:aws:sts::225989338000:assumed-role/cloudbinary-s3-upload-notifier-role-fyb9z3m8/cloudbinary-s3-upload-notifier is not authorized to perform: SNS:Publish on resource: arn:aws:sns:us-east-1:225989338000:cloudbinary-upload-notifications because no identity-based policy allows the SNS:Publish action
+Traceback (most recent call last):
+  File "/var/task/lambda_function.py", line 80, in lambda_handler
+    message_id = send_notification(message)
+  File "/var/task/lambda_function.py", line 53, in send_notification
+    response = sns.publish(
+  File "/var/lang/lib/python3.13/site-packages/botocore/client.py", line 606, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/var/lang/lib/python3.13/site-packages/botocore/context.py", line 123, in wrapper
+    return func(*args, **kwargs)
+  File "/var/lang/lib/python3.13/site-packages/botocore/client.py", line 1094, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+END RequestId: a91b73ff-49a8-404c-aa68-5c3ebabebad7
+REPORT RequestId: a91b73ff-49a8-404c-aa68-5c3ebabebad7	Duration: 203.57 ms	Billed Duration: 204 ms	Memory Size: 128 MB	Max Memory Used: 90 MB
+
+Request ID: a91b73ff-49a8-404c-aa68-5c3ebabebad7
+
+
+
+Status: Succeeded
+Test Event Name: Test-02
+
+Response:
+{
+  "statusCode": 200,
+  "body": "[{\"file\": \"invoice.pdf\", \"message_id\": \"d9de12eb-4365-5425-bbfd-7168f3dcde2f\", \"status\": \"Notification Sent\"}]"
+}
+
+The area below shows the last 4 KB of the execution log.
+
+Function Logs:
+START RequestId: 5a8748f9-f0d7-41b7-8e23-b59bc1d41c7f Version: $LATEST
+Received S3 Event
+File Details: {"bucket": "cloudbinary-fde-upload-demo", "file_name": "invoice.pdf", "file_size": 102400, "event": "ObjectCreated:Put"}
+END RequestId: 5a8748f9-f0d7-41b7-8e23-b59bc1d41c7f
+REPORT RequestId: 5a8748f9-f0d7-41b7-8e23-b59bc1d41c7f	Duration: 256.28 ms	Billed Duration: 257 ms	Memory Size: 128 MB	Max Memory Used: 90 MB
+
+Request ID: 5a8748f9-f0d7-41b7-8e23-b59bc1d41c7f
+
+
